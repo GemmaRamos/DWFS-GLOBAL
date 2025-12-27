@@ -1,20 +1,23 @@
 import React from 'react';
-import CineSelector from './CineSelector';
-import Pelicula from './Pelicula';
-import { useMovies } from '../hooks/useMovies';
+import BookSearcher from './BookSearcher.jsx';
+import BookCard from './BookCard.jsx';
+import { useBooks } from '../hooks/useBooks.js';
 
 const HomePage = () => {
-  const { movies, darkMode } = useMovies();
+    const { books } = useBooks();
 
-  return (
-    <div className={`home-page ${darkMode ? 'dark' : ''}`}>
-      <CineSelector />
-
-      {movies.map((movie) => (
-        <Pelicula key={movie.id} movie={movie} />
-      ))}
-    </div>
-  );
+    return (
+        <div className="home-page">
+            <BookSearcher />
+            <div className="book-container">
+                {books.length === 0 ? (
+                    <p>No se han encontrado libros.</p>
+                ) : (
+                    books.map((book) => <BookCard key={book.id} book={book} />)
+                )}
+            </div>
+        </div>
+    );
 };
 
 export default HomePage;

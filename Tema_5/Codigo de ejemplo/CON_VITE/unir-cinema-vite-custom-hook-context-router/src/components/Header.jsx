@@ -1,21 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useMovies } from '../hooks/useMovies';
+import { FaBookOpen , FaShoppingCart } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
+import {useCart} from "../hooks/useCart.js";
 
 const Header = () => {
-  const { getCurrentCityName, darkMode, toggleDarkMode } = useMovies();
+    const navigate = useNavigate();
+    const { totalItems } = useCart();
 
   return (
-    <header className={darkMode ? 'dark' : ''}>
-      <div className="header-content">
-        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-          <h1>🎬 UNIR Cinema - {getCurrentCityName()}</h1>
-        </Link>
-        <button className="dark-mode-toggle" onClick={toggleDarkMode}>
-          {darkMode ? '☀️ Modo Claro' : '🌙 Modo Oscuro'}
+      <header className="header">
+        <div className="header-left">
+          <FaBookOpen  className="header-icon" />
+            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}><h1 className="header-title">Relatos de Papel</h1></Link>
+        </div>
+
+        <button className="cart-button" onClick={() => navigate('/cart')} aria-label="Carrito de compra">
+          <FaShoppingCart />
+          <span className="cart-text">Carrito</span>
+            {totalItems > 0 && (
+                <span className="cart-count">{totalItems}</span>
+            )}
         </button>
-      </div>
-    </header>
+      </header>
   );
 };
 

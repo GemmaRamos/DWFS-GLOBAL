@@ -1,35 +1,33 @@
 import React, {useContext} from 'react';
 import '../styles/styles.css';
-import {Restaurant} from "../components/Restaurant";
-import {Header} from "../components/Header";
-import {Footer} from "../components/Footer";
-import {RestaurantContext} from "../context/RestaurantContext";
+import {Book} from "../components/Book";
+import {BookContext} from "../context/BookContext";
 import {LinearProgress} from "@mui/material";
 
 export const Overview = () => {
 
-    const { restaurants } = useContext(RestaurantContext);
+    const { books } = useContext(BookContext);
 
     return (
         <div>
-            <h2 className="center-text">Restaurantes Disponibles</h2>
-            <div className="restaurant-container">
+            <h2 className="center-text">Libros encontrados</h2>
+            <div className="book-container">
 
                 {
                     /**
-                     * Por cada restaurante conocido
-                     * Se crea un Restaurant con la informacion del restaurante
+                     * Por cada libro conocido
+                     * Se crea un Book con la informacion del libro
                      *
                      * Si los datos aun no se han recogido (lista de size 0) del back-end, se muestra un Spinner.
                      */
-                    restaurants.length > 0 ? (
-                        restaurants.map((restaurant, index) => (
-                            <Restaurant
+                    books.length > 0 ? (
+                        books.map((book, index) => (
+                            <Book
                                 key={index}
-                                id={restaurant.id}
-                                name={restaurant.name}
-                                cuisine={restaurant.cuisine}
-                                rating={restaurant.rating}
+                                id={book.id}
+                                name={book.name}
+                                author={book.author}
+                                rating={book.rating}
                             />
                         ))
                     ) : (

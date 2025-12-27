@@ -4,22 +4,22 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './components/HomePage';
-import MovieDetails from './components/MovieDetails';
-import SeatSelection from './components/SeatSelection';
-import { GlobalProvider } from './context/GlobalContext';
-import { useMovies } from './hooks/useMovies';
+import BookDetails from "./components/BookDetails.jsx";
+import CartPage from './components/CartPage.jsx';
+import { BookProvider } from './context/BookContext.jsx';
+import { CartProvider } from './context/CartContext.jsx';
+
 
 function AppContent() {
-  const { darkMode } = useMovies();
 
   return (
-    <div className={`App ${darkMode ? 'dark' : ''}`}>
+    <div className="App">
       <Header />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/movie/:id" element={<MovieDetails />} />
-        <Route path="/movie/:id/session/:time" element={<SeatSelection />} />
+        <Route path="/book/:id" element={<BookDetails />} />
+        <Route path="/cart" element={<CartPage />} />
       </Routes>
 
       <Footer />
@@ -29,11 +29,13 @@ function AppContent() {
 
 function App() {
   return (
-    <GlobalProvider>
-      <Router>
-        <AppContent />
-      </Router>
-    </GlobalProvider>
+    <BookProvider>
+      <CartProvider>
+        <Router>
+          <AppContent />
+        </Router>
+        </CartProvider>
+    </BookProvider>
   );
 }
 

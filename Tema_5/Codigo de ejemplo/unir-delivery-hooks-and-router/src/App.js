@@ -1,18 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import GlobalRouter from "./routes/GlobalRouter";
-import {RestaurantContext} from "./context/RestaurantContext";
+import {BookContext} from "./context/BookContext";
 import {Footer} from "./components/Footer";
-import {useRestaurants} from "./hooks/useRestaurants";
+import {useBooks} from "./hooks/useBooks";
 
 function App() {
 
-    const restaurants = useRestaurants();
+    const books = useBooks();
 
     return (
-        <RestaurantContext.Provider value={{restaurants}}>
+        <BookContext.Provider value={{books}}>
             <GlobalRouter></GlobalRouter>
             <Footer />
-        </RestaurantContext.Provider>
+        </BookContext.Provider>
     );
 }
 
