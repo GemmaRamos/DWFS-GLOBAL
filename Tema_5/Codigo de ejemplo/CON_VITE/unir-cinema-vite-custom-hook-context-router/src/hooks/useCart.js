@@ -41,13 +41,16 @@ export const useCart = () => {
         );
     };
 
-    // 🔢 Total de artículos
+    // Vaciar carrito
+    const clearCart = () => setCart([]);
+
+    // Total de artículos
     const totalItems = cart.reduce(
         (acc, item) => acc + item.quantity,
         0
     );
 
-    // 💰 Total del precio
+    // Total del precio
     const totalPrice = cart.reduce(
         (acc, item) => acc + item.book.price * item.quantity,
         0
@@ -58,6 +61,7 @@ export const useCart = () => {
         addToCart,
         increaseQuantity,
         decreaseQuantity,
+        clearCart,
         totalItems,
         totalPrice
     };

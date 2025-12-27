@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCart } from '../hooks/useCart.js';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CartPage = () => {
     const {
@@ -9,10 +10,13 @@ const CartPage = () => {
         totalPrice
     } = useCart();
 
+    const navigate = useNavigate();
+
     if (cart.length === 0) {
         return (
             <div className="home-page">
                 <h2>El carrito está vacío</h2>
+                <Link to="/" className="nav-button">Volver al inicio</Link>
             </div>
         );
     }
@@ -42,6 +46,12 @@ const CartPage = () => {
             <div className="cart-total">
                 <h2>Total: {totalPrice.toFixed(2)} €</h2>
             </div>
+            <button
+                className="nav-button"
+                onClick={() => navigate('/checkout')}
+            >
+                Checkout
+            </button>
         </div>
     );
 };

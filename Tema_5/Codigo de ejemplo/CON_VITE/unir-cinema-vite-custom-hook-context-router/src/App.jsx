@@ -8,6 +8,7 @@ import BookDetails from "./components/BookDetails.jsx";
 import CartPage from './components/CartPage.jsx';
 import { BookProvider } from './context/BookContext.jsx';
 import { CartProvider } from './context/CartContext.jsx';
+import CheckoutPage from "./components/CheckoutPage.jsx";
 
 
 function AppContent() {
@@ -20,6 +21,7 @@ function AppContent() {
         <Route path="/" element={<HomePage />} />
         <Route path="/book/:id" element={<BookDetails />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
       </Routes>
 
       <Footer />
