@@ -1,6 +1,6 @@
 import React from 'react';
-import BookSearcher from './BookSearcher.jsx';
-import BookCard from './BookCard.jsx';
+import BookSearcher from '../components/BookSearcher.jsx';
+import BookCard from '../components/BookCard.jsx';
 import { useBooks } from '../hooks/useBooks.js';
 
 const HomePage = () => {

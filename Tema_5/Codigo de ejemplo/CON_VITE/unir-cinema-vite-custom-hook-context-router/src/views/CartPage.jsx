@@ -23,6 +23,12 @@ const CartPage = () => {
 
     return (
         <div className="home-page cart-page">
+            <button
+                onClick={() => navigate(-1)}
+                className="nav-button"
+            >
+                ← Volver
+            </button>
             <h1>Carrito de compra</h1>
 
             {cart.map(({ book, quantity }) => (
