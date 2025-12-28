@@ -16,7 +16,7 @@ const BookDetails = () => {
         <div className="home-page">
           <div className="book-details">
             <h1>Libro no encontrado</h1>
-            <Link to="/" className="nav-button">Volver al inicio</Link>
+            <Link to="/books" className="nav-button">Volver al inicio</Link>
           </div>
         </div>
     );

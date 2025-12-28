@@ -16,7 +16,7 @@ const CartPage = () => {
         return (
             <div className="home-page">
                 <h2>El carrito está vacío</h2>
-                <Link to="/" className="nav-button">Volver al inicio</Link>
+                <Link to="/books" className="nav-button">Volver al inicio</Link>
             </div>
         );
     }
